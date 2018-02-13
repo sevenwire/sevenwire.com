@@ -1,0 +1,16 @@
+---
+title: Sevenwire
+timezone: America/Los_Angeles
+collections:
+  posts:
+    title: Posts
+    output: true
+  uploads:
+    title: Uploads
+    output: true
+email: b@sevenwire.com
+url: https://sevenwire.com
+github_username: sevenwire
+markdown: kramdown
+plugins:
+- jekyll-feed
