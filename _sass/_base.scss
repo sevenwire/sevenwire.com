@@ -1,4 +1,48 @@
+@import url("https://use.typekit.net/hyg4ebw.css");
+
 html,
 body {
   height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "brandon-grotesque";
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  main.site {
+    flex: 1;
+  }
+}
+
+nav.navbar.navbar-site {
+  .navbar-toggler-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.featured-post {
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  .post-content {
+    background: white;
+    position: relative;
+    padding: 1.5rem 1.5rem 0;
+    margin: -4rem 2rem 0;
+  }
+}
+
+.container.home {
+  padding: 0 4.4rem;
 }

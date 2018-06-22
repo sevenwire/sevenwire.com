@@ -8,6 +8,11 @@ collections:
   uploads:
     title: Uploads
     output: true
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "site"
 email: b@sevenwire.com
 url: https://sevenwire.com
 github_username: sevenwire
