@@ -5,11 +5,11 @@ collections:
   posts:
     title: Posts
     output: true
-  uploads:
-    title: Uploads
-    output: true
   projects:
     title: Projects
+    output: true
+  uploads:
+    title: Uploads
     output: true
 defaults:
 - scope:
@@ -25,7 +25,7 @@ defaults:
     path: ''
     type: projects
   values:
-    teaser:
+    teaser: 
     current: false
     featured: false
 email: b@sevenwire.com
