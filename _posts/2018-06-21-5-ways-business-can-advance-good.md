@@ -1,6 +1,7 @@
 ---
-layout: page
 title: 5 Ways Business Can Advance Good
+date: 2018-06-21 00:00:00 -07:00
+layout: page
 image: http://unsplash.it/1600/800?random&gravity=center
 ---
 
