@@ -8,11 +8,26 @@ collections:
   uploads:
     title: Uploads
     output: true
+  projects:
+    title: Projects
+    output: true
 defaults:
 - scope:
     path: ''
   values:
-    layout: site
+    layout: page
+- scope:
+    path: ''
+    type: pages
+  values:
+    layout: page
+- scope:
+    path: ''
+    type: projects
+  values:
+    teaser:
+    current: false
+    featured: false
 email: b@sevenwire.com
 url: https://sevenwire.com
 github_username: sevenwire

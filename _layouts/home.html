@@ -1,5 +1,5 @@
 ---
-layout: site
+layout: default
 ---
 
 <div class="container">
@@ -19,56 +19,52 @@ layout: site
     </div>
   </div>
 </div>
-<div class="container home">
-  <div class="row">
+<div class="container home mb-5">
+  <div class="row my-4">
     <div class="col">
-      <h3 class="mt-5 mb-4">OUR WORK</h3>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <h6 class="text-uppercase">We're currently working on:</h6>
-      <div class="card-deck mb-4">
-        <div class="card">
-          <div class="card-body">
-            <p class="card-title h4">
-              Modernizing a web app the helps patients with kidney disease <strong>live longer, healthier lives</strong>
-            </p>
-            <p class="card-text">
-              KDQOL
-            </p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <p class="card-title h4">
-              Building an app that helps schools raise money for <strong>important educational programs</strong>
-            </p>
-          </div>
-        </div>
-      </div>
-      <h6 class="text-uppercase">In the past we've:</h6>
-      <div class="card-deck">
-        <div class="card">
-          <div class="card-body">
-            <p class="card-title h4">
-              Built a web-based game to help elementary students <strong>learn math</strong>
-            </p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <p class="card-title h4">
-              Built a web app that inspires women to merge <strong>who they are and what they do</strong>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row mb-5">
-    <div class="col">
+      <hr>
       {{ content }}
+      <hr>
     </div>
   </div>
+  {% assign current_projects = site.projects | where: "current", "true" | where: "featured", "true" | sort: "position" %}
+  {% assign past_projects = site.projects | where: "current", "false" | where: "featured", "true" | sort: "position" %}
+  {% if current_projects.first or past_projects.first %}
+    <div class="row">
+    <div class="col">
+      <h3 class="mt-4 mb-4">OUR WORK</h3>
+      {% if current_projects.first %}
+        <h6 class="text-uppercase">We're currently working on:</h6>
+        <div class="card-deck mb-4">
+          {% for current_project in current_projects limit:4 %}
+            <div class="card">
+              <div class="card-body">
+                <p class="card-title h4">
+                  {{ current_project.teaser | markdownify | remove: '<p>' | remove: '</p>' }}
+                </p>
+                <p class="card-text">
+                </p>
+              </div>
+              <img src="{{ current_project.thumbnail }}" alt="{{ current_project.title | escape }}" class="card-img-bottom">
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+      {% if past_projects.first %}
+        <h6 class="text-uppercase">In the past we've:</h6>
+        <div class="card-deck">
+          {% for past_project in past_projects limit:4 %}
+            <div class="card">
+              <div class="card-body">
+                <p class="card-title h4">
+                  {{ past_project.teaser | markdownify | remove: '<p>' | remove: '</p>' }}
+                </p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
 </div>
