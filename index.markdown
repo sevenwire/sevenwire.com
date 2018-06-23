@@ -1,6 +1,7 @@
 ---
 title: About
-custom_page_title: Web & mobile apps to help businesses and not-for-profits advance good | Sevenwire
+custom_page_title: Web & mobile apps to help businesses and not-for-profits advance
+  good | Sevenwire
 layout: home
 ---
 
