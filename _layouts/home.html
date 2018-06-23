@@ -11,7 +11,7 @@ layout: default
             <img src="{{ post.image }}" alt="" class="img-fluid post-image rounded-top">
             <div class="post-content">
               <h2>{{ post.title }}</h2>
-              {{ post.excerpt }}
+              {{ post.excerpt | markdownify }}
             </div>
           </a>
         </div>
@@ -30,41 +30,73 @@ layout: default
   {% assign current_projects = site.projects | where: "current", "true" | where: "featured", "true" | sort: "position" %}
   {% assign past_projects = site.projects | where: "current", "false" | where: "featured", "true" | sort: "position" %}
   {% if current_projects.first or past_projects.first %}
-    <div class="row">
+    <div class="row mt-5">
+      <div class="col">
+        <h3 class="mb-4">OUR WORK</h3>
+        {% if current_projects.first %}
+          <h6 class="text-uppercase">We're currently working on:</h6>
+          <div class="card-deck mb-4">
+            {% for current_project in current_projects limit:4 %}
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-title card-text h4">
+                    {{ current_project.headline | markdownify | remove: '<p>' | remove: '</p>' }}
+                  </p>
+                  <!-- <p class="card-text"></p> -->
+                </div>
+                <!-- <img src="{{ current_project.thumbnail }}" alt="{{ current_project.title | escape }}" class="card-img-bottom"> -->
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+        {% if past_projects.first %}
+          <h6 class="text-uppercase">In the past we've:</h6>
+          <div class="card-deck">
+            {% for past_project in past_projects limit:4 %}
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-title card-text h4">
+                    {{ past_project.headline | markdownify | remove: '<p>' | remove: '</p>' }}
+                  </p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+  <div class="row mt-5">
     <div class="col">
-      <h3 class="mt-4 mb-4">OUR WORK</h3>
-      {% if current_projects.first %}
-        <h6 class="text-uppercase">We're currently working on:</h6>
-        <div class="card-deck mb-4">
-          {% for current_project in current_projects limit:4 %}
-            <div class="card">
-              <div class="card-body">
-                <p class="card-title h4">
-                  {{ current_project.teaser | markdownify | remove: '<p>' | remove: '</p>' }}
-                </p>
-                <p class="card-text">
-                </p>
-              </div>
-              <img src="{{ current_project.thumbnail }}" alt="{{ current_project.title | escape }}" class="card-img-bottom">
-            </div>
-          {% endfor %}
+      <h3 class="mb-4">SERVICES</h3>
+      <div class="card-deck">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title card-text h4">Web application development</p>
+          </div>
         </div>
-      {% endif %}
-      {% if past_projects.first %}
-        <h6 class="text-uppercase">In the past we've:</h6>
-        <div class="card-deck">
-          {% for past_project in past_projects limit:4 %}
-            <div class="card">
-              <div class="card-body">
-                <p class="card-title h4">
-                  {{ past_project.teaser | markdownify | remove: '<p>' | remove: '</p>' }}
-                </p>
-              </div>
-            </div>
-          {% endfor %}
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title card-text h4">Mobile application development</p>
+          </div>
         </div>
-      {% endif %}
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title card-text h4">Application architecture</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title card-text h4">Application testing</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  {% endif %}
+  <div class="row mt-5">
+    <div class="col">
+      <h3 class="mb-4">TECHNOLOGIES</h3>
+      <p>Ruby, Rails, React, React Native, GraphQL, and Postgres.</p>
+    </div>
+  </div>
 </div>
